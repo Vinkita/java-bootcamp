@@ -1,5 +1,6 @@
 package CartModel;
 
+import java.text.DecimalFormat;
 import java.util.ArrayList;
 import java.util.Iterator;
 
@@ -99,6 +100,21 @@ public class ShoppingCart implements IsumPrices {
 		return aux;
 	}
 
-
+	@Override
+	public String toString() {
+		StringBuilder builder = new StringBuilder("# Shopping Cart:\n");
+		
+		// Loop on every order line
+		for (Iterator<OrderLine> it = lines.iterator(); it.hasNext();){
+			OrderLine ol = it.next();
+			builder.append("\t"+ol.toString()+"\n");
+		}
+		
+		builder.append("Payment: "+ payment + "|\n");
+		builder.append("Shipdate: " + shipDate + "|\n");
+		builder.append("Status: " + status + "|\n");
+		builder.append("Complete: "+ complete + "|\n");
+		return builder.toString();
+	}
 
 }
