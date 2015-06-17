@@ -40,6 +40,18 @@ public class CartTest {
 		assertTrue(ProductCatalog.containsProduct(p));
 	}
 	
+	@Test
+	public void addProductTest() {
+		Product p = ProductCatalog.randomProduct();		
+		cart.addOrder(new OrderLine(p, 5));
+		
+		assertFalse(cart.getOrderLines().isEmpty());
+		
+		p = cart.getOrderLines().get(0).getProduct();
+		assertNotNull(p);
+		assertTrue(ProductCatalog.containsProduct(p));
+	}
+	
 	private void prepareCart(){
 		cart = new ShoppingCart();
 		
